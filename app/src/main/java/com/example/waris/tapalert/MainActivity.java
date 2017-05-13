@@ -1,6 +1,8 @@
 package com.example.waris.tapalert;
 
+import android.content.DialogInterface;
 import android.content.Intent;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.Editable;
@@ -9,7 +11,11 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.Chronometer;
+import android.widget.EditText;
+import android.widget.LinearLayout;
 import android.widget.TextView;
+
+import java.text.ParseException;
 
 public class MainActivity extends AppCompatActivity implements MainView{
     private MainPresenter presenter;
@@ -38,7 +44,7 @@ public class MainActivity extends AppCompatActivity implements MainView{
         Intent intent = new Intent(this, CountDownActivity.class);
         Log.d("Send",txtTime);
         intent.putExtra("Time", txtTime);
-        startActivityForResult(intent,0);
+        startActivity(intent);
 
     }
 
@@ -79,6 +85,34 @@ public class MainActivity extends AppCompatActivity implements MainView{
         });
     }
 
+    public void editTime(View view){
+        AlertDialog.Builder dialog = new AlertDialog.Builder(this);
+        dialog.setCancelable(true);
+        final EditText input = new EditText(MainActivity.this);
+        LinearLayout.LayoutParams lp = new LinearLayout.LayoutParams(
+                LinearLayout.LayoutParams.MATCH_PARENT,
+                LinearLayout.LayoutParams.MATCH_PARENT);
+        input.setText(watch.getText().toString());
+
+        dialog.setPositiveButton("Submit",
+                new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int id) {
+                        dialog.cancel();
+                        watch.setText(input.getText().toString());
+                        try {
+                            presenter.calculateVolume(watch.getText().toString());
+                        } catch (ParseException e) {
+                            e.printStackTrace();
+                        }
+                    }
+                }
+        );
+
+        AlertDialog alertDialog = dialog.create();
+        alertDialog.setView(input);
+        alertDialog.show();
+    }
+
     @Override
     public void showFlowRate(double flowRate) {
         TextView textFlowRate = (TextView) findViewById(R.id.textFlowRate);
@@ -89,5 +123,10 @@ public class MainActivity extends AppCompatActivity implements MainView{
     public void showUsingTime(String time) {
         Chronometer watch = (Chronometer) findViewById(R.id.textWatch);
         watch.setText(time);
+    }
+
+    @Override
+    public void showVolume(double vol) {
+        textVol.setText(String.format("%.2f",vol));
     }
 }

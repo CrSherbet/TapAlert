@@ -2,6 +2,8 @@ package com.example.waris.tapalert;
 
 import android.util.Log;
 
+import java.text.ParseException;
+
 import model.Tank;
 import model.Tap;
 import model.Timer;
@@ -35,9 +37,14 @@ public class MainPresenter {
         tank.setVolume(Double.parseDouble(volume));
         double usingTime = timer.calculateTime(tap.getFlowRate(), tank.getVolume());
         String time = timer.convertToString(usingTime);
-        Log.d("Time",time+" "+usingTime);
         view.showUsingTime(time);
     }
 
+    public void calculateVolume(String time) throws ParseException {
+        long second = timer.convertToSecond(time);
+        tank.setVolume(timer.calculateVolume(tap.getFlowRate(),second));
+        view.showVolume(tank.getVolume());
+
+    }
 
 }

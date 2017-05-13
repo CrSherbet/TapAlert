@@ -28,6 +28,10 @@ public class Timer {
         return volume/flowRate;
     }
 
+    public double calculateVolume(double flowRate, long time){
+        return flowRate * time;
+    }
+
     public String convertToString(double second){
         SimpleDateFormat timeFormat = new SimpleDateFormat("HH:mm:ss");
         timeFormat.setTimeZone(TimeZone.getTimeZone("UTC"));

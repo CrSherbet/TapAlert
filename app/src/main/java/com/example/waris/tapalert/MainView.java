@@ -7,4 +7,5 @@ package com.example.waris.tapalert;
 public interface MainView {
     void showFlowRate(double flowRate);
     void showUsingTime(String time);
+    void showVolume(double vol);
 }
