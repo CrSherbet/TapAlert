@@ -1,7 +1,12 @@
 package com.example.waris.tapalert;
 
+import android.content.DialogInterface;
 import android.content.Intent;
+import android.media.Ringtone;
+import android.media.RingtoneManager;
+import android.net.Uri;
 import android.os.CountDownTimer;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -19,6 +24,7 @@ public class CountDownActivity extends AppCompatActivity {
     private Chronometer watch;
     private Button btn_cancel;
     private TextView status;
+    private Ringtone r;
     private Timer timer = new Timer();
     private CountDownTimer counter;
     private long second = 0;
@@ -51,8 +57,39 @@ public class CountDownActivity extends AppCompatActivity {
             public void onFinish() {
                 watch.setText("00:00:00");
                 status.setText("Finished");
+                alert();
+
+
             }
         }.start();
+
+    }
+
+    public void alert(){
+        try {
+            Uri notification = RingtoneManager.getDefaultUri(RingtoneManager.TYPE_RINGTONE);
+            r = RingtoneManager.getRingtone(getApplicationContext(), notification);
+            r.play();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        AlertDialog.Builder dialog = new AlertDialog.Builder(this);
+        dialog.setMessage("Finished");
+        dialog.setCancelable(true);
+
+       dialog.setPositiveButton("GET IT!",
+                new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int id) {
+                        dialog.cancel();
+                        r.stop();
+                        finish();
+                    }
+                }
+       );
+
+        AlertDialog alertDialog = dialog.create();
+        alertDialog.show();
 
     }
     public void cancel(View view){
