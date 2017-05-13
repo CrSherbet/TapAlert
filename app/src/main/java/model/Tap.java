@@ -8,9 +8,11 @@ public class Tap {
     private double width;
     private double area;
     private double flowRate;
-    private final double speed = 0.8;
+    private final double speed = 0.4;
 
-    public Tap (){}
+    public Tap (){
+        setWidth(0);
+    }
 
     public void setWidth(double width){
         this.width = width * 0.0254;
@@ -27,6 +29,6 @@ public class Tap {
     }
 
     public double getFlowRate(){
-        return flowRate;
+        return flowRate / 0.001;
     }
 }

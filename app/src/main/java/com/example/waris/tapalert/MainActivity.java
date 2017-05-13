@@ -1,9 +1,11 @@
 package com.example.waris.tapalert;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
+import android.view.View;
 import android.widget.Button;
 import android.widget.Chronometer;
 import android.widget.TextView;
@@ -13,18 +15,29 @@ public class MainActivity extends AppCompatActivity implements MainView{
     private TextView textWidth;
     private TextView textVol;
     private Button btn_start;
+    private Chronometer watch;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         presenter = new MainPresenter(this);
-
-        btn_start = (Button) findViewById(R.id.btn_start);
+        watch = (Chronometer) findViewById(R.id.textWatch);
+        watch.setText("00:00:00");
 
         setUpWidthFn();
         setUpVolFn();
-        //setUpBtnStart();
+
+        btn_start = (Button) findViewById(R.id.btn_start);
+
+    }
+
+    public void setupTime(View view){
+        String txtTime = watch.getText().toString();
+        Intent intent = new Intent(this, CountDownActivity.class);
+        intent.putExtra("Time", txtTime);
+        startActivity(intent);
+
     }
 
 

@@ -7,10 +7,12 @@ package model;
 public class Tank {
     private double volume;
 
-    public Tank(){}
+    public Tank(){
+        setVolume(0);
+    }
 
-    public void setVolume(Double vol){
-        this.volume = vol * 0.001;
+    public void setVolume(double vol){
+        this.volume = vol;
     }
 
     public double getVolume(){
@@ -18,6 +20,6 @@ public class Tank {
     }
 
     public double convertToLiter(){
-        return volume / 0.001;
+        return volume;
     }
 }
