@@ -9,23 +9,20 @@ import android.os.CountDownTimer;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
-import android.widget.Button;
 import android.widget.Chronometer;
 import android.widget.TextView;
 
 import java.text.ParseException;
 import java.util.concurrent.TimeUnit;
 
-import model.Timer;
+import model.Calculator;
 
 public class CountDownActivity extends AppCompatActivity {
     private Chronometer watch;
-    private Button btn_cancel;
     private TextView status;
     private Ringtone r;
-    private Timer timer = new Timer();
+    private Calculator timer = new Calculator();
     private CountDownTimer counter;
     private long second = 0;
 
@@ -58,8 +55,6 @@ public class CountDownActivity extends AppCompatActivity {
                 watch.setText("00:00:00");
                 status.setText("Finished");
                 alert();
-
-
             }
         }.start();
 
@@ -75,7 +70,7 @@ public class CountDownActivity extends AppCompatActivity {
         }
 
         AlertDialog.Builder dialog = new AlertDialog.Builder(this);
-        dialog.setMessage("Finished");
+        dialog.setMessage("Finished!!!");
         dialog.setCancelable(true);
 
        dialog.setPositiveButton("GET IT!",

@@ -1,49 +1,42 @@
 package com.example.waris.tapalert;
 
-import android.util.Log;
-
 import java.text.ParseException;
 
-import model.Tank;
-import model.Tap;
-import model.Timer;
+import model.Calculator;
 
 /**
  * Created by waris on 5/12/2017.
  */
 
 public class MainPresenter {
-    private Tap tap;
-    private Tank tank;
-    private Timer timer;
+
+    private Calculator calculator;
     private MainView view;
 
 
     public MainPresenter(MainView view){
         this.view = view;
-        this.tap = new Tap();
-        this.tank = new Tank();
-        this.timer = new Timer();
+        this.calculator = new Calculator();
     }
 
     public void calculateFlowRate(String width){
-        tap.setWidth(Double.parseDouble(width));
-        double flowRate = tap.getFlowRate();
+        calculator.setWidth(width);
+        double flowRate = calculator.getFlowRate();
         view.showFlowRate(flowRate);
-        calculateTime(tank.getVolume()+"");
+        calculateTime(calculator.getVolume() + "");
     }
 
     public void calculateTime(String volume ){
-        tank.setVolume(Double.parseDouble(volume));
-        double usingTime = timer.calculateTime(tap.getFlowRate(), tank.getVolume());
-        String time = timer.convertToString(usingTime);
+        calculator.setVolume(volume);
+        double usingTime = calculator.calculateTime(calculator.getFlowRate(), calculator.getVolume());
+        String time = calculator.convertToString(usingTime);
         view.showUsingTime(time);
     }
 
     public void calculateVolume(String time) throws ParseException {
-        long second = timer.convertToSecond(time);
-        tank.setVolume(timer.calculateVolume(tap.getFlowRate(),second));
-        view.showVolume(tank.getVolume());
+        long second = calculator.convertToSecond(time);
+        calculator.calculateVolume(calculator.getFlowRate(),second);
+        view.showVolume(calculator.getVolume());
 
     }
 

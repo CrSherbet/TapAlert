@@ -9,7 +9,6 @@ import android.text.Editable;
 import android.text.TextWatcher;
 import android.util.Log;
 import android.view.View;
-import android.widget.Button;
 import android.widget.Chronometer;
 import android.widget.EditText;
 import android.widget.LinearLayout;
@@ -21,7 +20,6 @@ public class MainActivity extends AppCompatActivity implements MainView{
     private MainPresenter presenter;
     private TextView textWidth;
     private TextView textVol;
-    private Button btn_start;
     private Chronometer watch;
 
     @Override
@@ -34,9 +32,6 @@ public class MainActivity extends AppCompatActivity implements MainView{
 
         setUpWidthFn();
         setUpVolFn();
-
-        btn_start = (Button) findViewById(R.id.btn_start);
-
     }
 
     public void setupTime(View view){

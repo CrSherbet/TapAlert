@@ -18,8 +18,4 @@ public class Tank {
     public double getVolume(){
         return volume;
     }
-
-    public double convertToLiter(){
-        return volume;
-    }
 }

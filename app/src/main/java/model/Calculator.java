@@ -1,9 +1,5 @@
 package model;
 
-import android.media.TimedText;
-import android.provider.ContactsContract;
-import android.text.format.DateFormat;
-import android.text.format.Time;
 import android.util.Log;
 
 import java.text.ParseException;
@@ -16,20 +12,22 @@ import java.util.concurrent.TimeUnit;
  * Created by waris on 5/12/2017.
  */
 
-public class Timer {
-    private double time;
-    private double startTime;
-    private double endTime;
+public class Calculator {
 
-
-    public Timer(){}
+    private Tap tap;
+    private Tank tank;
+    public Calculator(){
+        this.tap = new Tap();
+        this.tank = new Tank();
+    }
 
     public double calculateTime(double flowRate, double volume){
         return volume/flowRate;
     }
 
     public double calculateVolume(double flowRate, long time){
-        return flowRate * time;
+        this.tank.setVolume(flowRate * time);
+        return this.tank.getVolume();
     }
 
     public String convertToString(double second){
@@ -48,4 +46,19 @@ public class Timer {
         return date.getTime() / 1000L;
     }
 
+    public void setWidth(String width) {
+        this.tap.setWidth( Double.parseDouble(width));
+    }
+
+    public void setVolume(String volume) {
+        this.tank.setVolume(Double.parseDouble(volume));
+    }
+
+    public double getVolume() {
+        return this.tank.getVolume();
+    }
+
+    public double getFlowRate() {
+        return this.tap.getFlowRate();
+    }
 }

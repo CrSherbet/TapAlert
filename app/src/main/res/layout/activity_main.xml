@@ -6,20 +6,31 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
+    android:background="@drawable/bg"
     tools:context="com.example.waris.tapalert.MainActivity">
     <LinearLayout
         android:layout_width="wrap_content"
+        android:layout_height="120pt">
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content">
+
         <TextView
+            android:id="@+id/textView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Width of Tap (inch): "/>
+            android:text="Width of Tap (inch): "
+            android:textSize="10pt"
+            android:layout_marginLeft="40dp"
+            android:textColor="@color/colorText"/>
 
         <EditText
             android:id="@+id/textWidth"
             android:layout_width="80dp"
             android:layout_height="wrap_content"
-            android:hint="Width"/>
+            android:hint="Width"
+            android:textColor="@color/colorText"/>
 
     </LinearLayout>
 
@@ -29,12 +40,18 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Flow rate of this water tap: " />
+            android:text="Flow rate of this water tap: "
+            android:textSize="8pt"
+            android:layout_marginLeft="40dp"
+            android:textColor="@color/colorText"/>
+
         <TextView
             android:id="@+id/textFlowRate"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="0 L/s" />
+            android:text="0 L/s"
+            android:textSize="8pt"
+            android:textColor="@color/colorText"/>
     </LinearLayout>
 
     <LinearLayout
@@ -43,13 +60,18 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Volumn of Tank (liter): "/>
+            android:text="Volumn of Tank (liter): "
+            android:textSize="8pt"
+            android:layout_marginLeft="40dp"
+            android:textColor="@color/colorText"/>
 
         <EditText
             android:id="@+id/textVolume"
             android:layout_width="80dp"
             android:layout_height="wrap_content"
-            android:hint="Volume"/>
+            android:hint="Volume"
+            android:textSize="8pt"
+            android:textColor="@color/colorText"/>
 
     </LinearLayout>
     <LinearLayout
@@ -59,22 +81,35 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Time "/>
+            android:text="Time: "
+            android:textSize="8pt"
+            android:layout_marginLeft="40dp"
+            android:textColor="@color/colorText"/>
         <Chronometer
             android:id="@+id/textWatch"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            android:textSize="12pt"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:textColor="@color/colorText"/>
         <Button
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Edit"
-            android:onClick="editTime"/>
+            android:onClick="editTime"
+            android:textColor="@color/colorText"/>
     </LinearLayout>
     <Button
         android:id="@+id/btn_start"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:onClick="setupTime"
-        android:text="Start"/>
+        android:text="Start"
+        android:width="250dp"
+        android:height="80dp"
+        android:textSize="10pt"
+        android:layout_marginLeft="70dp"
+        android:textColor="@color/colorText" />
 
 </LinearLayout>

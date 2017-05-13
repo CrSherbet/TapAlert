@@ -6,25 +6,46 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
+    android:background="@drawable/bg2"
     tools:context="com.example.waris.tapalert.CountDownActivity">
-
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="100pt">
+    </LinearLayout>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Remaining Time"
+        android:layout_marginLeft="40dp"
+        android:textColor="@color/colorText"
+        android:textSize="10pt"/>
     <Chronometer
         android:id="@+id/watcher"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textSize="35pt"/>
+        android:layout_marginLeft="40dp"
+        android:textSize="32pt"/>
 
     <TextView
         android:id="@+id/status"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="FILLING"/>
+        android:text="FILLING"
+        android:textColor="@color/colorText"
+        android:layout_marginLeft="150dp"
+        android:textSize="10pt"/>
 
     <Button
         android:id="@+id/btn_cancel"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Cancel"
-        android:onClick="cancel"/>
+        android:onClick="cancel"
+        android:width="250dp"
+        android:height="80dp"
+        android:textSize="10pt"
+        android:layout_marginTop="10dp"
+        android:layout_marginLeft="70dp"
+        android:textColor="@color/colorText" />
 
 </LinearLayout>
