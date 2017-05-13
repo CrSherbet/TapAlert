@@ -14,10 +14,17 @@
         android:layout_height="wrap_content"
         android:textSize="35pt"/>
 
+    <TextView
+        android:id="@+id/status"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="FILLING"/>
+
     <Button
         android:id="@+id/btn_cancel"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Cancel"/>
+        android:text="Cancel"
+        android:onClick="cancel"/>
 
 </LinearLayout>

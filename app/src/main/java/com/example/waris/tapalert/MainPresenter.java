@@ -35,11 +35,9 @@ public class MainPresenter {
         tank.setVolume(Double.parseDouble(volume));
         double usingTime = timer.calculateTime(tap.getFlowRate(), tank.getVolume());
         String time = timer.convertToString(usingTime);
-        Log.d("Hint",time+" "+usingTime);
+        Log.d("Time",time+" "+usingTime);
         view.showUsingTime(time);
     }
 
-    public void countDown(String txtTime){
 
-    }
 }

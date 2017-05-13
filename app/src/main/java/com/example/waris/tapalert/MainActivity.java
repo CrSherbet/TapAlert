@@ -5,6 +5,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.Chronometer;
@@ -35,8 +36,9 @@ public class MainActivity extends AppCompatActivity implements MainView{
     public void setupTime(View view){
         String txtTime = watch.getText().toString();
         Intent intent = new Intent(this, CountDownActivity.class);
+        Log.d("Send",txtTime);
         intent.putExtra("Time", txtTime);
-        startActivity(intent);
+        startActivityForResult(intent,0);
 
     }
 
