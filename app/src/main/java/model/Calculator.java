@@ -1,7 +1,5 @@
 package model;
 
-import android.util.Log;
-
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -33,16 +31,13 @@ public class Calculator {
     public String convertToString(double second){
         SimpleDateFormat timeFormat = new SimpleDateFormat("HH:mm:ss");
         timeFormat.setTimeZone(TimeZone.getTimeZone("UTC"));
-        String time = timeFormat.format(new  Date(TimeUnit.SECONDS.toMillis((long) second)));
-        Log.d("2St", time + " " + second);
-        return time;
+        return timeFormat.format(new  Date(TimeUnit.SECONDS.toMillis((long) second)));
     }
 
     public long convertToSecond(String time) throws ParseException {
         SimpleDateFormat timeFormat = new SimpleDateFormat("HH:mm:ss");
         timeFormat.setTimeZone(TimeZone.getTimeZone("UTC"));
         Date date = timeFormat.parse(time);
-        Log.d("2s", time +" " + date.getTime() / 1000L);
         return date.getTime() / 1000L;
     }
 
